@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+   {% block content %}
+<h1> Hello {{name}}!!!!</h1>
+<nav>
+    <ul>
+        {% if user.is_authenticated %}
+        <li> Hello {{user.first_name}}</li>
+         <li><a href="accounts/logout">Logout</a></li>
+        {% else %}
+        <li><a href="accounts/register">Register</a></li>
+        <li><a href="accounts/login">Login</a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% for stud in data %}
+{% if stud.score > 75 %}
+<p> Amazing Student:</p>
+{% endif %}
+<p> Name: {{stud.name}} => Phone Num: {{stud.comp}} => Class: {{stud.class}} => Score: {{stud.score}}</p>
+<img  style="width: 100px;" src="{{stud.profile.url}}" alt="">
+{% endfor %}
+
+<!--By default method is get which works but it would show the data in url-->
+<form action="add" method="post">
+    {% csrf_token %}
+   Enter First Number :  <input name="num1" type="number"> <br/>
+    Enter Second Number : <input name="num2" type="number"> <br/>
+    <input type="submit">
+</form>
+    {% endblock %}
