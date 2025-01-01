@@ -179,7 +179,7 @@ for i in copyArr:
 
 # NUMPY
 # Multi dimension array we use numpy
-# pip3 install numpy in cmd
+# pip install numpy in cmd
 
 from numpy import *
 # This might be bit confusing the array which you are seeing below is from numpy not from array
